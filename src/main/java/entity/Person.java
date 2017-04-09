@@ -2,7 +2,6 @@ package entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,24 +10,13 @@ import javax.persistence.Id;
  * @author Samuel Butta
  */
 @Entity
-public class User {
-
-
-    private Long id;
-
-    private String name;
-
-    public User() {
-        // prazdny konstruktor
-    }
-
-    public User(String name) {
-        this.name = name;
-    }
+public class Person {
 
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
+    private Long id;
+
     public Long getId() {
         return id;
     }
@@ -37,12 +25,4 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    @Column
-    public void setName(String name) {
-        this.name = name;
-    }
 }

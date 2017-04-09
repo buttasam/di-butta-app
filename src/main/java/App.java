@@ -1,4 +1,5 @@
 import dao.UserDao;
+import entity.User;
 
 /**
  * @author Samuel Butta
@@ -11,9 +12,9 @@ public class App {
         try {
             UserDao userDao = new UserDao();
 
-            userDao.saveUser();
+            System.out.println(userDao.save(new User("Sam")));
 
-            userDao.getUsers().forEach(u -> System.out.println(u.getName()));
+            userDao.getAll(User.class).forEach(u -> System.out.println(u.getName()));
 
         } catch (Exception e) {
             e.printStackTrace();

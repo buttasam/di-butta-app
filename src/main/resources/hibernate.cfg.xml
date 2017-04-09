@@ -29,6 +29,8 @@
         <property name="hbm2ddl.auto">create</property>
 
         <mapping class="entity.User"/>
+        <mapping class="entity.Person"/>
+        <mapping class="entity.Car"/>
 
     </session-factory>
 
