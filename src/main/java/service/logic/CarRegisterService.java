@@ -5,17 +5,19 @@ import dao.DriverDao;
 import entity.Driver;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * @author Samuel Butta
  */
+@Singleton
 public class CarRegisterService {
 
 
     private DriverDao driverDao;
     private CarDao carDao ;
 
-    public void addPerson(String name) {
+    public void addDriver(String name) {
         Driver driver = new Driver();
         driver.setName(name);
 

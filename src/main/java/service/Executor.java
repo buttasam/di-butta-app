@@ -2,6 +2,7 @@ package service;
 
 import cvut.fit.di.testEntity.field.CarDao;
 import dao.DriverDao;
+import service.logic.CarRegisterService;
 import service.ui.Printer;
 
 import javax.inject.Inject;
@@ -13,7 +14,13 @@ import javax.inject.Singleton;
 @Singleton
 public class Executor {
 
+    /**
+     * Sluzby
+     */
     private Printer printer;
+    private Inputer inputer;
+
+    private CarRegisterService carRegisterService;
 
     /**
      * DAO objekty
@@ -27,8 +34,11 @@ public class Executor {
             case LIST_ALL_CARS:
                 listAllCars();
                 break;
+            case ADD_DRIVER:
+                addDriver();
+                break;
             case LIST_ALL_DRIVERS:
-                listAllPeople();
+                listAllDrivers();
                 break;
 
         }
@@ -39,9 +49,21 @@ public class Executor {
 
     }
 
-    private void listAllPeople() {
-        printer.print("vypis vsech lidi");
+    private void listAllDrivers() {
+        printer.print("Vypis vsech ridicu:");
 
+        driverDao.getAll().forEach(d -> {
+            printer.print(d.getName());
+        });
+    }
+
+    private void addDriver() {
+        printer.print("Zadejte ridicovo jmeno:");
+
+        String name = inputer.readInput();
+        carRegisterService.addDriver(name);
+
+        printer.print("Ridic s jmenem " + name + " byl pridan");
     }
 
     @Inject
@@ -57,5 +79,15 @@ public class Executor {
     @Inject
     public void setCarDao(CarDao carDao) {
         this.carDao = carDao;
+    }
+
+    @Inject
+    public void setCarRegisterService(CarRegisterService carRegisterService) {
+        this.carRegisterService = carRegisterService;
+    }
+
+    @Inject
+    public void setInputer(Inputer inputer) {
+        this.inputer = inputer;
     }
 }
