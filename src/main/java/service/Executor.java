@@ -1,6 +1,6 @@
 package service;
 
-import cvut.fit.di.testEntity.field.CarDao;
+import dao.CarDao;
 import dao.DriverDao;
 import service.logic.CarRegisterService;
 import service.ui.Printer;
@@ -40,13 +40,19 @@ public class Executor {
             case LIST_ALL_DRIVERS:
                 listAllDrivers();
                 break;
-
+            case ADD_CAR:
+                addCar();
+                break;
         }
 
     }
 
     private void listAllCars() {
+        printer.print("Vypis vsech aut:");
 
+        carDao.getAll().forEach(c -> {
+            printer.print(c.getRegistrationNumber());
+        });
     }
 
     private void listAllDrivers() {
@@ -64,6 +70,15 @@ public class Executor {
         carRegisterService.addDriver(name);
 
         printer.print("Ridic s jmenem " + name + " byl pridan");
+    }
+
+    private void addCar() {
+        printer.print("Zadejte SPZ auta:");
+
+        String registrationNumber = inputer.readInput();
+        carRegisterService.addCar(registrationNumber);
+
+        printer.print("Auto s SPZ " + registrationNumber + " bylo pridano");
     }
 
     @Inject

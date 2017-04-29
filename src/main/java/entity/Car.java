@@ -2,10 +2,7 @@ package entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +20,9 @@ public class Car implements Serializable {
 
     @ManyToMany(mappedBy="cars")
     private List<Driver> drivers = new ArrayList<>();
+
+    @Column
+    private String registrationNumber;
 
 
     public Long getId() {
@@ -45,5 +45,13 @@ public class Car implements Serializable {
 
     public void setDrivers(List<Driver> people) {
         this.drivers = people;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
 }
