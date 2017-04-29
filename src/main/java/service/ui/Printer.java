@@ -13,4 +13,6 @@ public interface Printer {
     void printMenu();
 
     void printWaitingForInput();
+
+    void print(String data);
 }

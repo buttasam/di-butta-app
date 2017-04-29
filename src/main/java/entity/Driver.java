@@ -11,7 +11,7 @@ import java.util.List;
  * @author Samuel Butta
  */
 @Entity
-public class Person implements Serializable {
+public class Driver implements Serializable {
 
     @Id
     @GeneratedValue(generator = "increment")

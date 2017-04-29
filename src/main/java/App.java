@@ -1,14 +1,5 @@
 import cvut.fit.di.container.DIContainer;
-import dao.CarDao;
-import dao.PersonDao;
-import dao.UserDao;
-import entity.Car;
-import entity.Person;
-import entity.User;
 import terminal.MainBoard;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Samuel Butta
@@ -25,7 +16,7 @@ public class App {
             userDao.getAll().forEach(u -> System.out.println(u.getName()));
 
 
-            PersonDao personDao = new PersonDao();
+            DriverDao personDao = new DriverDao();
             CarDao carDao = new CarDao();
 
             List<Car> cars = new ArrayList<>();
@@ -33,7 +24,7 @@ public class App {
             cars.add(new Car());
             cars.add(new Car());
 
-            Person person = new Person();
+            Driver person = new Driver();
             person.setCars(cars);
 
             personDao.save(person);

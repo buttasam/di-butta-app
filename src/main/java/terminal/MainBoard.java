@@ -1,6 +1,7 @@
 package terminal;
 
 import service.Action;
+import service.Executor;
 import service.Inputer;
 import service.Parser;
 import service.auth.LoginService;
@@ -22,6 +23,7 @@ public class MainBoard {
     private Inputer inputer;
     private Parser parser;
 
+    private Executor executor;
 
     /**
      * Hlavni smicka aplikace
@@ -40,7 +42,7 @@ public class MainBoard {
             // vstup se preda parseru
             Action action = parser.resolveAction(input);
 
-            System.out.println(action);
+            executor.executeAction(action);
 
             // vystup z parseru se preda executorovi
         }
@@ -60,5 +62,10 @@ public class MainBoard {
     @Inject
     public void setParser(Parser parser) {
         this.parser = parser;
+    }
+
+    @Inject
+    public void setExecutor(Executor executor) {
+        this.executor = executor;
     }
 }

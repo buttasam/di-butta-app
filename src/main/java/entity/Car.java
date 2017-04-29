@@ -22,7 +22,7 @@ public class Car implements Serializable {
     private Long id;
 
     @ManyToMany(mappedBy="cars")
-    private List<Person> people = new ArrayList<>();
+    private List<Driver> drivers = new ArrayList<>();
 
 
     public Long getId() {
@@ -39,11 +39,11 @@ public class Car implements Serializable {
         this.id = id;
     }
 
-    public List<Person> getPeople() {
-        return people;
+    public List<Driver> getDrivers() {
+        return drivers;
     }
 
-    public void setPeople(List<Person> people) {
-        this.people = people;
+    public void setDrivers(List<Driver> people) {
+        this.drivers = people;
     }
 }
