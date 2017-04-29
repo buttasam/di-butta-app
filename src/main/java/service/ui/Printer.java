@@ -10,4 +10,7 @@ public interface Printer {
 
     void printHeader();
 
+    void printMenu();
+
+    void printWaitingForInput();
 }
