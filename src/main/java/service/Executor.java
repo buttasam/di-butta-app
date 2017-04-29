@@ -2,6 +2,8 @@ package service;
 
 import dao.CarDao;
 import dao.DriverDao;
+import entity.Car;
+import entity.Driver;
 import service.logic.CarRegisterService;
 import service.ui.Printer;
 
@@ -43,6 +45,15 @@ public class Executor {
             case ADD_CAR:
                 addCar();
                 break;
+            case ADD_CAR_TO_DRIVER:
+                addCarToDriver();
+                break;
+            case DELETE_DRIVER:
+                deleteDriver();
+                break;
+            case DELETE_CAR:
+                deleteCar();
+                break;
         }
 
     }
@@ -51,7 +62,7 @@ public class Executor {
         printer.print("Vypis vsech aut:");
 
         carDao.getAll().forEach(c -> {
-            printer.print(c.getRegistrationNumber());
+            printer.print(c.getRegistrationNumber() + " pocet ridicu: " + c.getDrivers().size());
         });
     }
 
@@ -59,7 +70,7 @@ public class Executor {
         printer.print("Vypis vsech ridicu:");
 
         driverDao.getAll().forEach(d -> {
-            printer.print(d.getName());
+            printer.print(d.getName() + " pocet aut: " + d.getCars().size());
         });
     }
 
@@ -79,6 +90,30 @@ public class Executor {
         carRegisterService.addCar(registrationNumber);
 
         printer.print("Auto s SPZ " + registrationNumber + " bylo pridano");
+    }
+
+    private void addCarToDriver() {
+        printer.print("Zadejte id auta:");
+        String carId = inputer.readInput();
+
+        Car car = carDao.getById(new Long(carId));
+
+        printer.print("Zadejte id ridice:");
+        String driverId = inputer.readInput();
+
+        Driver driver = driverDao.getById(new Long(driverId));
+
+        carRegisterService.addCarToDriver(car, driver);
+
+        printer.print("Auto s id " + carId+ " bylo pridano k ridici s id " + driverId);
+    }
+
+    private void deleteDriver() {
+
+    }
+
+    private void deleteCar() {
+
     }
 
     @Inject

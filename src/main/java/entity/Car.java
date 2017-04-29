@@ -18,7 +18,7 @@ public class Car implements Serializable {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
-    @ManyToMany(mappedBy="cars")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy="cars")
     private List<Driver> drivers = new ArrayList<>();
 
     @Column

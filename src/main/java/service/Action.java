@@ -10,6 +10,8 @@ public enum Action {
     ADD_CAR,
     ADD_DRIVER,
     ADD_CAR_TO_DRIVER,
+    DELETE_DRIVER,
+    DELETE_CAR,
     NOT_FOUND
 
 }

@@ -4,12 +4,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import util.HibernateUtil;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author Samuel Butta
  */
-abstract class AbstractDao<T, K> {
+abstract class AbstractDao<T, K extends Serializable> {
 
     protected SessionFactory sessionFactory;
 
@@ -27,6 +28,18 @@ abstract class AbstractDao<T, K> {
         sessionFactory = HibernateUtil.getSessionFactory();
     }
 
+
+    public T getById(K id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        T result = (T) session.get(tClass.getName(), id);
+
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
     public K save(T entity) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -34,6 +47,14 @@ abstract class AbstractDao<T, K> {
         session.getTransaction().commit();
         session.close();
         return id;
+    }
+
+    public void update(T entity) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(entity);
+        session.getTransaction().commit();
+        session.close();
     }
 
     public List<T> getAll() {

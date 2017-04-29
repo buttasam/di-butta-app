@@ -7,6 +7,7 @@ import entity.Driver;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 
 /**
  * @author Samuel Butta
@@ -33,6 +34,15 @@ public class CarRegisterService {
         car.setRegistrationNumber(registrationNumber);
 
         carDao.save(car);
+    }
+
+    public void addCarToDriver(Car car, Driver driver) {
+        List<Car> cars = driver.getCars();
+        cars.add(car);
+
+        driver.setCars(cars);
+
+        driverDao.update(driver);
     }
 
     @Inject
