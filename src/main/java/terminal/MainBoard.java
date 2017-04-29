@@ -1,7 +1,7 @@
 package terminal;
 
 import service.Inputer;
-import service.Printer;
+import service.ui.Printer;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

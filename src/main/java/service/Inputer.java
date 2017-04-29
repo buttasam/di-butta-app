@@ -1,5 +1,6 @@
 package service;
 
+
 import javax.inject.Singleton;
 import java.util.Scanner;
 /**
