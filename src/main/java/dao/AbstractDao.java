@@ -49,6 +49,14 @@ abstract class AbstractDao<T, K extends Serializable> {
         return id;
     }
 
+    public void delete(T entity) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.remove(entity);
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public void update(T entity) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();

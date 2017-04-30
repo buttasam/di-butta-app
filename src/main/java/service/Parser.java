@@ -26,6 +26,12 @@ public class Parser {
                 return Action.ADD_CAR;
             case "5":
                 return Action.ADD_CAR_TO_DRIVER;
+            case "6":
+                return Action.REMOVE_CAR_FROM_DRIVER;
+            case "7":
+                return Action.DELETE_CAR;
+            case "8":
+                return Action.DELETE_DRIVER;
             default:
                 return Action.NOT_FOUND;
         }

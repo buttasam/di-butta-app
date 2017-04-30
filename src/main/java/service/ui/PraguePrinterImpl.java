@@ -20,7 +20,10 @@ public class PraguePrinterImpl implements Printer {
                 "2) Pridej ridice\n" +
                 "3) Zobrazit vsechny auta \n" +
                 "4) Pridej auto \n" +
-                "5) Pridej auto k ridici";
+                "5) Pridej auto k ridici \n" +
+                "6) Odeber auto od ridice\n" +
+                "7) Odstan auto \n" +
+                "8) Odstan ridice";
 
         System.out.println(menu);
     }

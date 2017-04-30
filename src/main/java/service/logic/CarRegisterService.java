@@ -45,6 +45,14 @@ public class CarRegisterService {
         driverDao.update(driver);
     }
 
+    public void deleteDriver(Driver driver) {
+        driverDao.delete(driver);
+    }
+
+    public void deleteCar(Car car) {
+        carDao.delete(car);
+    }
+
     @Inject
     public void setDriverDao(DriverDao driverDao) {
         this.driverDao = driverDao;

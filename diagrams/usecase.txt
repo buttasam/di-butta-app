@@ -4,6 +4,8 @@
 [Administrátor]-(Odebrat řidiče)
 [Administrátor]-(Zobrazit všechny řidiče)
 [Administrátor]-(Zobrazit všechny auta)
+[Administrátor]-(Přidat auto k řidiči)
+[Administrátor]-(Odebrat auto od řidiče)
 [Uživatel]-(Zobrazit vlastní auta)
 (Odebrat řidiče)>(Najít řidiče)
 (Odebrat auto)>(Najít auto)

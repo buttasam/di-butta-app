@@ -48,6 +48,9 @@ public class Executor {
             case ADD_CAR_TO_DRIVER:
                 addCarToDriver();
                 break;
+            case REMOVE_CAR_FROM_DRIVER:
+                removeCarFromDriver();
+                break;
             case DELETE_DRIVER:
                 deleteDriver();
                 break;
@@ -109,10 +112,26 @@ public class Executor {
     }
 
     private void deleteDriver() {
+        printer.print("Zadejte id ridice:");
 
+        String driverId = inputer.readInput();
+        Driver driver = driverDao.getById(new Long(driverId));
+
+        carRegisterService.deleteDriver(driver);
+        printer.print("Ridic s id " + driverId + " byl smazan");
     }
 
     private void deleteCar() {
+        printer.print("Zadejte id auta:");
+
+        String carId = inputer.readInput();
+        Car car = carDao.getById(new Long(carId));
+
+        carRegisterService.deleteCar(car);
+        printer.print("Auto s id " + carId + " bylo smazano");
+    }
+
+    private void removeCarFromDriver() {
 
     }
 

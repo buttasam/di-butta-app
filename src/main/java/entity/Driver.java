@@ -20,7 +20,7 @@ public class Driver implements Serializable {
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     private List<Car> cars = new ArrayList<>();
 
     public Long getId() {
