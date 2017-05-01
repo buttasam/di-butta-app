@@ -9,8 +9,13 @@ import javax.inject.Singleton;
 public class PraguePrinterImpl implements Printer {
 
 
+    @Override
+    public void printLogin() {
+        print("--- Prihlaseni ---");
+    }
+
     public void printHeader() {
-        System.out.println("--- Registr vozidel ---");
+        print("--- Registr vozidel ---");
     }
 
     @Override
@@ -25,17 +30,22 @@ public class PraguePrinterImpl implements Printer {
                 "7) Odstan auto \n" +
                 "8) Odstan ridice";
 
-        System.out.println(menu);
+        print(menu);
     }
 
     @Override
     public void printWaitingForInput() {
-        System.out.println("Zadejte vstup:");
+        print("Zadejte vstup:");
     }
 
     @Override
     public void print(String data) {
         System.out.println(data);
+    }
+
+    @Override
+    public void printErrorLogin() {
+        print("Prihlaseni nebylo uspesne.");
     }
 
 }

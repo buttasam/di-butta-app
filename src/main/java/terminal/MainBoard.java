@@ -1,5 +1,6 @@
 package terminal;
 
+import entity.User;
 import service.Action;
 import service.Executor;
 import service.Inputer;
@@ -32,7 +33,7 @@ public class MainBoard {
         // vypsani hlavicky
         printer.printHeader();
 
-        // TODO overeni uzivatele --> v executorovi
+        verifyUser();
 
         printer.printMenu();
         while(true) {
@@ -45,6 +46,16 @@ public class MainBoard {
             executor.executeAction(action);
 
             // vystup z parseru se preda executorovi
+        }
+
+    }
+
+    private void verifyUser() {
+        User user = null;
+
+        while(user == null) {
+            printer.printLogin();
+            user = executor.loginUser();
         }
 
     }

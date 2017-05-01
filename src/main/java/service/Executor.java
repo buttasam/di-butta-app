@@ -4,6 +4,8 @@ import dao.CarDao;
 import dao.DriverDao;
 import entity.Car;
 import entity.Driver;
+import entity.User;
+import service.auth.LoginService;
 import service.logic.CarRegisterService;
 import service.ui.Printer;
 
@@ -23,6 +25,7 @@ public class Executor {
     private Inputer inputer;
 
     private CarRegisterService carRegisterService;
+    private LoginService loginService;
 
     /**
      * DAO objekty
@@ -58,23 +61,28 @@ public class Executor {
                 deleteCar();
                 break;
         }
+    }
 
+    public User loginUser() {
+        printer.print("Zadejte email:");
+        String email = inputer.readInput();
+
+        printer.print("Zadejte heslo:");
+        String password = inputer.readInput();
+
+        return loginService.loginUser(email, password);
     }
 
     private void listAllCars() {
         printer.print("Vypis vsech aut:");
 
-        carDao.getAll().forEach(c -> {
-            printer.print(c.getRegistrationNumber() + " pocet ridicu: " + c.getDrivers().size());
-        });
+        carDao.getAll().forEach(c -> printer.print(c.getRegistrationNumber() + " pocet ridicu: " + c.getDrivers().size()));
     }
 
     private void listAllDrivers() {
         printer.print("Vypis vsech ridicu:");
 
-        driverDao.getAll().forEach(d -> {
-            printer.print(d.getName() + " pocet aut: " + d.getCars().size());
-        });
+        driverDao.getAll().forEach(d -> printer.print(d.getName() + " pocet aut: " + d.getCars().size()));
     }
 
     private void addDriver() {
@@ -158,5 +166,10 @@ public class Executor {
     @Inject
     public void setInputer(Inputer inputer) {
         this.inputer = inputer;
+    }
+
+    @Inject
+    public void setLoginService(LoginService loginService) {
+        this.loginService = loginService;
     }
 }

@@ -8,6 +8,8 @@ import javax.inject.Singleton;
 @Singleton
 public interface Printer {
 
+    void printLogin();
+
     void printHeader();
 
     void printMenu();
@@ -15,4 +17,6 @@ public interface Printer {
     void printWaitingForInput();
 
     void print(String data);
+
+    void printErrorLogin();
 }
