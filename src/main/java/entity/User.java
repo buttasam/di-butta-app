@@ -29,6 +29,9 @@ public class User implements Serializable {
     @Column
     private String password;
 
+    @Column
+    private Role role;
+
     public User() {
         // prazdny konstruktor
     }
@@ -67,5 +70,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
