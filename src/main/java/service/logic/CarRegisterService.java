@@ -10,6 +10,8 @@ import javax.inject.Singleton;
 import java.util.List;
 
 /**
+ * Servisni trida pracujici nad DAO objekty
+ *
  * @author Samuel Butta
  */
 @Singleton
@@ -17,11 +19,16 @@ public class CarRegisterService {
 
 
     /**
-     * DAOs
+     * DAO objekty
      */
     private DriverDao driverDao;
     private CarDao carDao;
 
+    /**
+     * Prida ridice do database
+     *
+     * @param name jmeno ridice
+     */
     public void addDriver(String name) {
         Driver driver = new Driver();
         driver.setName(name);
@@ -29,6 +36,11 @@ public class CarRegisterService {
         driverDao.save(driver);
     }
 
+    /**
+     * Prida auto do database
+     *
+     * @param registrationNumber poznavaci znacka
+     */
     public void addCar(String registrationNumber) {
         Car car = new Car();
         car.setRegistrationNumber(registrationNumber);
@@ -36,6 +48,12 @@ public class CarRegisterService {
         carDao.save(car);
     }
 
+    /**
+     * Prida k autu ridice
+     *
+     * @param car    instance auta
+     * @param driver instance ridice
+     */
     public void addCarToDriver(Car car, Driver driver) {
         List<Car> cars = driver.getCars();
         cars.add(car);
@@ -45,10 +63,20 @@ public class CarRegisterService {
         driverDao.update(driver);
     }
 
+    /**
+     * Odstani ridice z databaze
+     *
+     * @param driver instance ridice
+     */
     public void deleteDriver(Driver driver) {
         driverDao.delete(driver);
     }
 
+    /**
+     * Odstani auto z databaze
+     *
+     * @param car intance auta
+     */
     public void deleteCar(Car car) {
         carDao.delete(car);
     }

@@ -6,14 +6,14 @@ import org.junit.Test;
 /**
  * @author Samuel Butta
  */
-public class PasswordHasherTest {
+public class PasswordServiceTest {
 
 
     @Test
     public void testHashPassword() {
         String pass = "Ahoj123";
 
-        PasswordHasher h = new PasswordHasherImpl();
+        PasswordService h = new PasswordServiceImpl();
 
         String hash = h.hashPassword(pass);
 

@@ -11,18 +11,16 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * Trida reprezentuje zakladni
+ * Trida reprezentuje zakladni okno terminalu.
  *
  * @author Samuel Butta
  */
 @Singleton
 public class MainBoard {
 
-
     private Printer printer;
     private Reader reader;
     private Parser parser;
-
     private Executor executor;
 
     /**
@@ -35,28 +33,29 @@ public class MainBoard {
         verifyUser();
 
         printer.printMenu();
-        while(true) {
-
+        while (true) {
             String input = reader.readInput();
 
             // vstup se preda parseru
             Action action = parser.resolveAction(input);
 
-            executor.executeAction(action);
-
             // vystup z parseru se preda executorovi
+            executor.executeAction(action);
         }
 
     }
 
+    /**
+     * Metoda overuje uzivatele.
+     * Smycka trva, dokud neni overen.
+     */
     private void verifyUser() {
         User user = null;
 
-        while(user == null) {
+        while (user == null) {
             printer.printLogin();
             user = executor.loginUser();
         }
-
     }
 
     @Inject

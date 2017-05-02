@@ -23,6 +23,10 @@ public class Driver implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     private List<Car> cars = new ArrayList<>();
 
+    public Driver() {
+        // prazdny konstruktor
+    }
+
     public Long getId() {
         return id;
     }

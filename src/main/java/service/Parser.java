@@ -2,8 +2,6 @@ package service;
 
 import cvut.fit.di.anotation.scope.Prototype;
 
-import javax.inject.Singleton;
-
 /**
  * @author Samuel Butta
  */
@@ -13,8 +11,9 @@ public class Parser {
 
     /**
      * Na zaklade vstupu rozhodne o jakou akci se jedna
-     * @param input
-     * @return
+     *
+     * @param input vstupni retezec
+     * @return typ akce
      */
     public Action resolveAction(String input) {
         switch (input) {

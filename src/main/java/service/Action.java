@@ -1,6 +1,8 @@
 package service;
 
 /**
+ * Typy vsech akci, ktere jsou mozne v aplikaci.
+ *
  * @author Samuel Butta
  */
 public enum Action {

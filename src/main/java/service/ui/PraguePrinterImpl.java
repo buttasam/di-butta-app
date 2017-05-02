@@ -3,6 +3,8 @@ package service.ui;
 import javax.inject.Singleton;
 
 /**
+ * Specialini implementace rozhrani PrinterImpl
+ *
  * @author Samuel Butta
  */
 @Singleton
@@ -15,7 +17,7 @@ public class PraguePrinterImpl implements Printer {
     }
 
     public void printHeader() {
-        print("--- Registr vozidel ---");
+        print("--- Registr vozidel (Praha)---");
     }
 
     @Override
@@ -31,11 +33,6 @@ public class PraguePrinterImpl implements Printer {
                 "8) Odstan ridice";
 
         print(menu);
-    }
-
-    @Override
-    public void printWaitingForInput() {
-        print("Zadejte vstup:");
     }
 
     @Override

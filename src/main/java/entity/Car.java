@@ -24,6 +24,9 @@ public class Car implements Serializable {
     @Column
     private String registrationNumber;
 
+    public Car() {
+        // prazdny konstruktor
+    }
 
     public Long getId() {
         return id;

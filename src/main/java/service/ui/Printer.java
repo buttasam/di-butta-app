@@ -8,15 +8,31 @@ import javax.inject.Singleton;
 @Singleton
 public interface Printer {
 
+    /**
+     * Vypis pri prihlaseni
+     */
     void printLogin();
 
+    /**
+     * Vypis hlavicky
+     */
     void printHeader();
 
+    /**
+     * Vypis menu
+     */
     void printMenu();
 
-    void printWaitingForInput();
 
+    /**
+     * Obecny vypis dat
+     * @param data data pro vypis
+     */
     void print(String data);
 
+
+    /**
+     * Vypis spatneho prihlaseni
+     */
     void printErrorLogin();
 }

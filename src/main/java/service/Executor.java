@@ -13,6 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
+ * Trida pro rozlisuje a vykonava prislusnou akci
+ *
  * @author Samuel Butta
  */
 @Singleton
@@ -33,9 +35,14 @@ public class Executor {
     private DriverDao driverDao;
     private CarDao carDao;
 
+    /**
+     * Rozlisi prislusnou akci
+     *
+     * @param action typ akce
+     */
     public void executeAction(Action action) {
 
-        switch(action) {
+        switch (action) {
             case LIST_ALL_CARS:
                 listAllCars();
                 break;
@@ -63,6 +70,11 @@ public class Executor {
         }
     }
 
+    /**
+     * Pokusi se prihlasit uzivatele
+     *
+     * @return prislusny uzivatel, null pokud neexistuje, nebo se nepodarilo overit
+     */
     public User loginUser() {
         printer.print("Zadejte email:");
         String email = reader.readInput();
@@ -73,18 +85,27 @@ public class Executor {
         return loginService.loginUser(email, password);
     }
 
+    /**
+     * Vypise vsechny auta
+     */
     private void listAllCars() {
         printer.print("Vypis vsech aut:");
 
         carDao.getAll().forEach(c -> printer.print(c.getRegistrationNumber() + " pocet ridicu: " + c.getDrivers().size()));
     }
 
+    /**
+     * Vypise vsechny ridice
+     */
     private void listAllDrivers() {
         printer.print("Vypis vsech ridicu:");
 
         driverDao.getAll().forEach(d -> printer.print(d.getName() + " pocet aut: " + d.getCars().size()));
     }
 
+    /**
+     * Prida ridice
+     */
     private void addDriver() {
         printer.print("Zadejte ridicovo jmeno:");
 
@@ -94,6 +115,9 @@ public class Executor {
         printer.print("Ridic s jmenem " + name + " byl pridan");
     }
 
+    /**
+     * Prida auto
+     */
     private void addCar() {
         printer.print("Zadejte SPZ auta:");
 
@@ -103,6 +127,9 @@ public class Executor {
         printer.print("Auto s SPZ " + registrationNumber + " bylo pridano");
     }
 
+    /**
+     * Priradi auto k ridici
+     */
     private void addCarToDriver() {
         printer.print("Zadejte id auta:");
         String carId = reader.readInput();
@@ -116,9 +143,12 @@ public class Executor {
 
         carRegisterService.addCarToDriver(car, driver);
 
-        printer.print("Auto s id " + carId+ " bylo pridano k ridici s id " + driverId);
+        printer.print("Auto s id " + carId + " bylo pridano k ridici s id " + driverId);
     }
 
+    /**
+     * Smaze ridice
+     */
     private void deleteDriver() {
         printer.print("Zadejte id ridice:");
 
@@ -129,6 +159,9 @@ public class Executor {
         printer.print("Ridic s id " + driverId + " byl smazan");
     }
 
+    /**
+     * Smaze auto
+     */
     private void deleteCar() {
         printer.print("Zadejte id auta:");
 
@@ -139,8 +172,11 @@ public class Executor {
         printer.print("Auto s id " + carId + " bylo smazano");
     }
 
+    /**
+     * Smaze auto od ridice
+     */
     private void removeCarFromDriver() {
-
+        // TODO
     }
 
     @Inject

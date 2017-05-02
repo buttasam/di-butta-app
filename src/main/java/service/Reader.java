@@ -1,12 +1,10 @@
 package service;
 
-
 import cvut.fit.di.anotation.scope.Prototype;
 
-import javax.inject.Singleton;
 import java.util.Scanner;
+
 /**
- *
  * Zpracovava vstupny od uzivatele
  *
  * @author Samuel Butta
@@ -15,8 +13,11 @@ import java.util.Scanner;
 @Prototype
 public class Reader {
 
+
     /**
      * Ceka na vstup od uzivatele
+     *
+     * @return vstup od uzivatele
      */
     public String readInput() {
 
