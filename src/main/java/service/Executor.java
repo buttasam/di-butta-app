@@ -22,7 +22,7 @@ public class Executor {
      * Sluzby
      */
     private Printer printer;
-    private Inputer inputer;
+    private Reader reader;
 
     private CarRegisterService carRegisterService;
     private LoginService loginService;
@@ -65,10 +65,10 @@ public class Executor {
 
     public User loginUser() {
         printer.print("Zadejte email:");
-        String email = inputer.readInput();
+        String email = reader.readInput();
 
         printer.print("Zadejte heslo:");
-        String password = inputer.readInput();
+        String password = reader.readInput();
 
         return loginService.loginUser(email, password);
     }
@@ -88,7 +88,7 @@ public class Executor {
     private void addDriver() {
         printer.print("Zadejte ridicovo jmeno:");
 
-        String name = inputer.readInput();
+        String name = reader.readInput();
         carRegisterService.addDriver(name);
 
         printer.print("Ridic s jmenem " + name + " byl pridan");
@@ -97,7 +97,7 @@ public class Executor {
     private void addCar() {
         printer.print("Zadejte SPZ auta:");
 
-        String registrationNumber = inputer.readInput();
+        String registrationNumber = reader.readInput();
         carRegisterService.addCar(registrationNumber);
 
         printer.print("Auto s SPZ " + registrationNumber + " bylo pridano");
@@ -105,12 +105,12 @@ public class Executor {
 
     private void addCarToDriver() {
         printer.print("Zadejte id auta:");
-        String carId = inputer.readInput();
+        String carId = reader.readInput();
 
         Car car = carDao.getById(new Long(carId));
 
         printer.print("Zadejte id ridice:");
-        String driverId = inputer.readInput();
+        String driverId = reader.readInput();
 
         Driver driver = driverDao.getById(new Long(driverId));
 
@@ -122,7 +122,7 @@ public class Executor {
     private void deleteDriver() {
         printer.print("Zadejte id ridice:");
 
-        String driverId = inputer.readInput();
+        String driverId = reader.readInput();
         Driver driver = driverDao.getById(new Long(driverId));
 
         carRegisterService.deleteDriver(driver);
@@ -132,7 +132,7 @@ public class Executor {
     private void deleteCar() {
         printer.print("Zadejte id auta:");
 
-        String carId = inputer.readInput();
+        String carId = reader.readInput();
         Car car = carDao.getById(new Long(carId));
 
         carRegisterService.deleteCar(car);
@@ -164,8 +164,8 @@ public class Executor {
     }
 
     @Inject
-    public void setInputer(Inputer inputer) {
-        this.inputer = inputer;
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 
     @Inject

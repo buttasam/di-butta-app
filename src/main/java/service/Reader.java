@@ -1,6 +1,8 @@
 package service;
 
 
+import cvut.fit.di.anotation.scope.Prototype;
+
 import javax.inject.Singleton;
 import java.util.Scanner;
 /**
@@ -10,8 +12,8 @@ import java.util.Scanner;
  * @author Samuel Butta
  */
 
-@Singleton
-public class Inputer {
+@Prototype
+public class Reader {
 
     /**
      * Ceka na vstup od uzivatele

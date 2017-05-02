@@ -1,5 +1,7 @@
 package service.secure;
 
+import cvut.fit.di.anotation.scope.Prototype;
+
 import javax.inject.Singleton;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -8,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author Samuel Butta
  */
-@Singleton
+@Prototype
 public class PasswordHasherImpl implements PasswordHasher {
 
     private static final String SALT = "IODsasd/80@2MC465";

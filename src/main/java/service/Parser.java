@@ -1,11 +1,13 @@
 package service;
 
+import cvut.fit.di.anotation.scope.Prototype;
+
 import javax.inject.Singleton;
 
 /**
  * @author Samuel Butta
  */
-@Singleton
+@Prototype
 public class Parser {
 
 

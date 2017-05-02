@@ -3,9 +3,8 @@ package terminal;
 import entity.User;
 import service.Action;
 import service.Executor;
-import service.Inputer;
+import service.Reader;
 import service.Parser;
-import service.auth.LoginService;
 import service.ui.Printer;
 
 import javax.inject.Inject;
@@ -21,7 +20,7 @@ public class MainBoard {
 
 
     private Printer printer;
-    private Inputer inputer;
+    private Reader reader;
     private Parser parser;
 
     private Executor executor;
@@ -38,7 +37,7 @@ public class MainBoard {
         printer.printMenu();
         while(true) {
 
-            String input = inputer.readInput();
+            String input = reader.readInput();
 
             // vstup se preda parseru
             Action action = parser.resolveAction(input);
@@ -66,8 +65,8 @@ public class MainBoard {
     }
 
     @Inject
-    public void setInputer(Inputer inputer) {
-        this.inputer = inputer;
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 
     @Inject
