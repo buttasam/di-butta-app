@@ -13,7 +13,6 @@ import terminal.MainBoard;
 public class App {
 
     public static void main(String[] args) {
-
         DIContainer container = new DIContainer();
 
         initDatabaseData(container);
