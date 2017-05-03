@@ -176,7 +176,19 @@ public class Executor {
      * Smaze auto od ridice
      */
     private void removeCarFromDriver() {
-        // TODO
+        printer.print("Zadejte id auta:");
+        String carId = reader.readInput();
+
+        Car car = carDao.getById(new Long(carId));
+
+        printer.print("Zadejte id ridice:");
+        String driverId = reader.readInput();
+
+        Driver driver = driverDao.getById(new Long(driverId));
+
+        carRegisterService.removeCarFromDriver(car, driver);
+
+        printer.print("Auto s id " + carId + " bylo odebrano od ridice s id " + driverId);
     }
 
     @Inject

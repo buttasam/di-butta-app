@@ -8,6 +8,7 @@ import entity.Driver;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Servisni trida pracujici nad DAO objekty
@@ -59,6 +60,28 @@ public class CarRegisterService {
         cars.add(car);
 
         driver.setCars(cars);
+
+        driverDao.update(driver);
+    }
+
+    /**
+     * Odebere auto od ridice
+     *
+     * @param car    instance auta
+     * @param driver instance ridice
+     */
+    public void removeCarFromDriver(Car car, Driver driver) {
+        List<Car> cars = driver.getCars();
+
+        List<Car>  updatedCars = cars.stream().map(c -> {
+            if(!c.getId().equals(car.getId())) {
+                return c;
+            } else {
+                return null;
+            }
+        }).collect(Collectors.toList());
+
+        driver.setCars(updatedCars);
 
         driverDao.update(driver);
     }
