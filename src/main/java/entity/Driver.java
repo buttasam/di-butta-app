@@ -21,7 +21,7 @@ public class Driver implements Serializable {
     @Column
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Car> cars = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.EAGER)

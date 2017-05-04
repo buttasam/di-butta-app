@@ -218,8 +218,12 @@ public class Executor {
         String driverId = reader.readInput();
         Driver driver = driverDao.getById(new Long(driverId));
 
-        carRegisterService.deleteDriver(driver);
-        printer.print("Ridic s id " + driverId + " byl smazan");
+        try {
+            carRegisterService.deleteDriver(driver);
+            printer.print("Ridic s id " + driverId + " byl smazan");
+        } catch (Exception ex) {
+            printer.print("Ridice s id " + driverId + " se nepodarilo smazat.");
+        }
     }
 
     /**
@@ -231,8 +235,12 @@ public class Executor {
         String carId = reader.readInput();
         Car car = carDao.getById(new Long(carId));
 
-        carRegisterService.deleteCar(car);
-        printer.print("Auto s id " + carId + " bylo smazano");
+        try {
+            carRegisterService.deleteCar(car);
+            printer.print("Auto s id " + carId + " bylo smazano");
+        } catch (Exception ex) {
+            printer.print("Auto s id " + carId + " se nepodarilo smazat.");
+        }
     }
 
     /**
