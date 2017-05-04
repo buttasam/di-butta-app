@@ -125,7 +125,19 @@ public class Executor {
     }
 
     private void showUserCars(User user) {
-        printer.print("Vypis aut pro uzivatele " +  user.getEmail() + " :");
+        printer.print("Vypis aut pro uzivatele " + user.getEmail() + " :");
+
+        Driver driver = user.getDriver();
+
+        if (driver != null) {
+            driver.getCars()
+                    .forEach(c -> {
+                                printer.print(c.getRegistrationNumber() + " pocet ridicu: " + c.getDrivers().size());
+                            }
+                    );
+        } else {
+            printer.print("Prihlaseny uzivatel neni zaroven ridicem.");
+        }
     }
 
     /**

@@ -18,10 +18,14 @@ public class Driver implements Serializable {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
+    @Column
     private String name;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     private List<Car> cars = new ArrayList<>();
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private User user;
 
     public Driver() {
         // prazdny konstruktor
@@ -49,5 +53,13 @@ public class Driver implements Serializable {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
