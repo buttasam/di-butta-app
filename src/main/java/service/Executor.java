@@ -154,7 +154,10 @@ public class Executor {
     private void listAllCars() {
         printer.print("Vypis vsech aut:");
 
-        carDao.getAll().forEach(c -> printer.print(c.getRegistrationNumber() + " pocet ridicu: " + c.getDrivers().size()));
+        carDao.getAll().forEach(c -> printer.print(c.getRegistrationNumber()
+                + " (id: " + c.getId()
+                + ") pocet ridicu: "
+                + c.getDrivers().size()));
     }
 
     /**
@@ -163,7 +166,10 @@ public class Executor {
     private void listAllDrivers() {
         printer.print("Vypis vsech ridicu:");
 
-        driverDao.getAll().forEach(d -> printer.print(d.getName() + " pocet aut: " + d.getCars().size()));
+        driverDao.getAll().forEach(d -> printer.print(d.getName()
+                + " (id: " + d.getId()
+                + ") pocet aut: "
+                + d.getCars().size()));
     }
 
     /**
