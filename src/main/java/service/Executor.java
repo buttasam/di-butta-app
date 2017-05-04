@@ -66,6 +66,11 @@ public class Executor {
         return loginService.loginUser(email, password);
     }
 
+    /**
+     * Podle akce vykona prislusnou akci pro administratora
+     *
+     * @param action akce
+     */
     private void adminActions(Action action) {
         switch (action) {
             case EXIT_APPLICATION:
@@ -100,6 +105,12 @@ public class Executor {
         }
     }
 
+
+    /**
+     * Podle akce vykona prislusnou akci pro uzivatele
+     *
+     * @param action akce
+     */
     private void userActions(Action action, User user) {
         switch (action) {
             case EXIT_APPLICATION:
