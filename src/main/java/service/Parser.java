@@ -1,6 +1,7 @@
 package service;
 
 import cvut.fit.di.anotation.scope.Prototype;
+import entity.User;
 
 /**
  * @author Samuel Butta
@@ -15,8 +16,21 @@ public class Parser {
      * @param input vstupni retezec
      * @return typ akce
      */
-    public Action resolveAction(String input) {
+    public Action resolveAction(String input, User user) {
+        switch (user.getRole()) {
+            case ADMIN:
+                return resolveAdminActions(input);
+            case USER:
+                return resolveUserActions(input);
+            default:
+                return Action.NOT_FOUND;
+        }
+    }
+
+    public Action resolveAdminActions(String input) {
         switch (input) {
+            case "0":
+                return Action.EXIT_APPLICATION;
             case "1":
                 return Action.LIST_ALL_DRIVERS;
             case "2":
@@ -33,6 +47,17 @@ public class Parser {
                 return Action.DELETE_CAR;
             case "8":
                 return Action.DELETE_DRIVER;
+            default:
+                return Action.NOT_FOUND;
+        }
+    }
+
+    public Action resolveUserActions(String input) {
+        switch (input) {
+            case "0":
+                return Action.EXIT_APPLICATION;
+            case "1":
+                return Action.SHOW_USER_CARS;
             default:
                 return Action.NOT_FOUND;
         }

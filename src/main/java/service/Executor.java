@@ -40,9 +40,37 @@ public class Executor {
      *
      * @param action typ akce
      */
-    public void executeAction(Action action) {
+    public void executeAction(Action action, User user) {
+        switch (user.getRole()) {
+            case ADMIN:
+                adminActions(action);
+                break;
+            case USER:
+                userActions(action, user);
+                break;
+        }
+    }
 
+    /**
+     * Pokusi se prihlasit uzivatele
+     *
+     * @return prislusny uzivatel, null pokud neexistuje, nebo se nepodarilo overit
+     */
+    public User loginUser() {
+        printer.print("Zadejte email:");
+        String email = reader.readInput();
+
+        printer.print("Zadejte heslo:");
+        String password = reader.readInput();
+
+        return loginService.loginUser(email, password);
+    }
+
+    private void adminActions(Action action) {
         switch (action) {
+            case EXIT_APPLICATION:
+                exitApplication();
+                break;
             case LIST_ALL_CARS:
                 listAllCars();
                 break;
@@ -67,22 +95,34 @@ public class Executor {
             case DELETE_CAR:
                 deleteCar();
                 break;
+            default:
+                printer.printErrorAction();
         }
     }
 
+    private void userActions(Action action, User user) {
+        switch (action) {
+            case EXIT_APPLICATION:
+                exitApplication();
+                break;
+            case SHOW_USER_CARS:
+                showUserCars(user);
+                break;
+            default:
+                printer.printErrorAction();
+        }
+    }
+
+    private void showUserCars(User user) {
+        printer.print("Vypis aut pro uzivatele " +  user.getEmail() + " :");
+    }
+
     /**
-     * Pokusi se prihlasit uzivatele
-     *
-     * @return prislusny uzivatel, null pokud neexistuje, nebo se nepodarilo overit
+     * Ukonci aplikaci
      */
-    public User loginUser() {
-        printer.print("Zadejte email:");
-        String email = reader.readInput();
-
-        printer.print("Zadejte heslo:");
-        String password = reader.readInput();
-
-        return loginService.loginUser(email, password);
+    private void exitApplication() {
+        printer.print("Aplikace bude ukoncena ...");
+        System.exit(0);
     }
 
     /**

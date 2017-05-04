@@ -19,9 +19,15 @@ public interface Printer {
     void printHeader();
 
     /**
-     * Vypis menu
+     * Vypis uzivatelskeho menu
      */
-    void printMenu();
+    void printUserMenu();
+
+
+    /**
+     * Vypis administratorskeho menu
+     */
+    void printAdminMenu();
 
 
     /**
@@ -35,4 +41,10 @@ public interface Printer {
      * Vypis spatneho prihlaseni
      */
     void printErrorLogin();
+
+
+    /**
+     * Vypis zadani neplatne akce
+     */
+    void printErrorAction();
 }

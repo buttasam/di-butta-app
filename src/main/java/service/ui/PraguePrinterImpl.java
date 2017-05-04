@@ -21,8 +21,17 @@ public class PraguePrinterImpl implements Printer {
     }
 
     @Override
-    public void printMenu() {
+    public void printUserMenu() {
         String menu = "Nabidka - napiste dane cislo: \n" +
+                "0) Ukoncit aplikace\n" +
+                "1) Zobrazit moje auta";
+        print(menu);
+    }
+
+    @Override
+    public void printAdminMenu() {
+        String menu = "Nabidka - napiste dane cislo: \n" +
+                "0) Ukoncit aplikaci\n" +
                 "1) Zobrazit vsechny ridice\n" +
                 "2) Pridej ridice\n" +
                 "3) Zobrazit vsechny auta \n" +
@@ -43,6 +52,11 @@ public class PraguePrinterImpl implements Printer {
     @Override
     public void printErrorLogin() {
         print("Prihlaseni nebylo uspesne.");
+    }
+
+    @Override
+    public void printErrorAction() {
+        print("Neplatna operace");
     }
 
 }

@@ -7,6 +7,7 @@ package service;
  */
 public enum Action {
 
+    EXIT_APPLICATION,
     LIST_ALL_CARS,
     LIST_ALL_DRIVERS,
     ADD_CAR,
@@ -14,6 +15,7 @@ public enum Action {
     ADD_CAR_TO_DRIVER,
     DELETE_DRIVER,
     DELETE_CAR,
-    REMOVE_CAR_FROM_DRIVER, NOT_FOUND
+    REMOVE_CAR_FROM_DRIVER, NOT_FOUND,
+    SHOW_USER_CARS
 
 }
