@@ -91,8 +91,13 @@ public class CarRegisterService {
      *
      * @param driver instance ridice
      */
-    public void deleteDriver(Driver driver) {
+    public boolean deleteDriver(Driver driver) {
+        if(!driver.getCars().isEmpty()) {
+            return false;
+        }
         driverDao.delete(driver);
+
+        return true;
     }
 
     /**
@@ -100,8 +105,13 @@ public class CarRegisterService {
      *
      * @param car intance auta
      */
-    public void deleteCar(Car car) {
+    public boolean deleteCar(Car car) {
+        if(!car.getDrivers().isEmpty()) {
+            return false;
+        }
         carDao.delete(car);
+
+        return true;
     }
 
     @Inject

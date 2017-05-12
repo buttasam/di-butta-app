@@ -43,10 +43,18 @@ public class Executor {
     public void executeAction(Action action, User user) {
         switch (user.getRole()) {
             case ADMIN:
-                adminActions(action);
+                try {
+                    adminActions(action);
+                } catch (Exception ex) {
+                    printer.print("Pri pozadovane akci doslo k chybe.");
+                }
                 break;
             case USER:
-                userActions(action, user);
+                try {
+                    userActions(action, user);
+                } catch (Exception ex) {
+                    printer.print("Pri pozadovane akci doslo k chybe.");
+                }
                 break;
         }
     }
@@ -220,13 +228,16 @@ public class Executor {
      */
     private void deleteDriver() {
         printer.print("Zadejte id ridice:");
-
         String driverId = reader.readInput();
-        Driver driver = driverDao.getById(new Long(driverId));
 
         try {
-            carRegisterService.deleteDriver(driver);
-            printer.print("Ridic s id " + driverId + " byl smazan");
+            Driver driver = driverDao.getById(new Long(driverId));
+
+            if (carRegisterService.deleteDriver(driver)) {
+                printer.print("Ridic s id " + driverId + " byl smazan");
+            } else {
+                printer.print("Nejprve ridici odeberte vsechny auta, pak ho muzete smazat!");
+            }
         } catch (Exception ex) {
             printer.print("Ridice s id " + driverId + " se nepodarilo smazat.");
         }
@@ -237,13 +248,16 @@ public class Executor {
      */
     private void deleteCar() {
         printer.print("Zadejte id auta:");
-
         String carId = reader.readInput();
-        Car car = carDao.getById(new Long(carId));
 
         try {
-            carRegisterService.deleteCar(car);
-            printer.print("Auto s id " + carId + " bylo smazano");
+            Car car = carDao.getById(new Long(carId));
+
+            if (carRegisterService.deleteCar(car)) {
+                printer.print("Auto s id " + carId + " bylo smazano");
+            } else {
+                printer.print("Nejprve autu odeberte vsechny ridice, pak ho muzete smazat!");
+            }
         } catch (Exception ex) {
             printer.print("Auto s id " + carId + " se nepodarilo smazat.");
         }
@@ -253,19 +267,23 @@ public class Executor {
      * Smaze auto od ridice
      */
     private void removeCarFromDriver() {
-        printer.print("Zadejte id auta:");
-        String carId = reader.readInput();
+        try {
+            printer.print("Zadejte id auta:");
+            String carId = reader.readInput();
 
-        Car car = carDao.getById(new Long(carId));
+            Car car = carDao.getById(new Long(carId));
 
-        printer.print("Zadejte id ridice:");
-        String driverId = reader.readInput();
+            printer.print("Zadejte id ridice:");
+            String driverId = reader.readInput();
 
-        Driver driver = driverDao.getById(new Long(driverId));
+            Driver driver = driverDao.getById(new Long(driverId));
 
-        carRegisterService.removeCarFromDriver(car, driver);
+            carRegisterService.removeCarFromDriver(car, driver);
 
-        printer.print("Auto s id " + carId + " bylo odebrano od ridice s id " + driverId);
+            printer.print("Auto s id " + carId + " bylo odebrano od ridice s id " + driverId);
+        } catch (Exception ex) {
+            printer.print("Auto nelze odebrat od ridice.");
+        }
     }
 
     @Inject
