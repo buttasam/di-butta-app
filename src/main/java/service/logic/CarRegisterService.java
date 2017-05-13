@@ -25,6 +25,12 @@ public class CarRegisterService {
     private DriverDao driverDao;
     private CarDao carDao;
 
+    @Inject
+    public CarRegisterService(DriverDao driverDao, CarDao carDao) {
+        this.driverDao = driverDao;
+        this.carDao = carDao;
+    }
+
     /**
      * Prida ridice do database
      *
@@ -114,13 +120,4 @@ public class CarRegisterService {
         return true;
     }
 
-    @Inject
-    public void setDriverDao(DriverDao driverDao) {
-        this.driverDao = driverDao;
-    }
-
-    @Inject
-    public void setCarDao(CarDao carDao) {
-        this.carDao = carDao;
-    }
 }

@@ -2,6 +2,7 @@ package service.secure;
 
 import cvut.fit.di.anotation.scope.Prototype;
 
+import javax.inject.Singleton;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

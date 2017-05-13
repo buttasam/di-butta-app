@@ -24,6 +24,14 @@ public class MainBoard {
     private Parser parser;
     private Executor executor;
 
+    @Inject
+    public MainBoard(Printer printer, Reader reader, Parser parser, Executor executor) {
+        this.printer = printer;
+        this.reader = reader;
+        this.parser = parser;
+        this.executor = executor;
+    }
+
     /**
      * Hlavni smicka aplikace
      */
@@ -71,23 +79,4 @@ public class MainBoard {
         }
     }
 
-    @Inject
-    public void setPrinter(Printer printer) {
-        this.printer = printer;
-    }
-
-    @Inject
-    public void setReader(Reader reader) {
-        this.reader = reader;
-    }
-
-    @Inject
-    public void setParser(Parser parser) {
-        this.parser = parser;
-    }
-
-    @Inject
-    public void setExecutor(Executor executor) {
-        this.executor = executor;
-    }
 }

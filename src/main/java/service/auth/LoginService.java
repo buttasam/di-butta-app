@@ -16,6 +16,11 @@ public class LoginService {
     private UserDao userDao;
     private PasswordService passwordService;
 
+    @Inject
+    public LoginService(UserDao userDao, PasswordService passwordService) {
+        this.userDao = userDao;
+        this.passwordService = passwordService;
+    }
 
     /**
      * Pokusi se najit a overit uzivatele.
@@ -34,13 +39,4 @@ public class LoginService {
         }
     }
 
-    @Inject
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
-
-    @Inject
-    public void setPasswordService(PasswordService passwordService) {
-        this.passwordService = passwordService;
-    }
 }

@@ -1,3 +1,4 @@
+import cvut.fit.di.builder.injector.NotCycleConstructorInjector;
 import cvut.fit.di.container.DIContainer;
 import dao.CarDao;
 import dao.DriverDao;
@@ -8,6 +9,7 @@ import entity.Role;
 import entity.User;
 import service.logic.CarRegisterService;
 import service.secure.PasswordService;
+import service.secure.PasswordServiceImpl;
 import terminal.MainBoard;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        DIContainer container = new DIContainer();
+        DIContainer container = new DIContainer(new NotCycleConstructorInjector());
 
         initDatabaseData(container);
 
@@ -36,7 +38,7 @@ public class App {
      */
     private static void initDatabaseData(DIContainer container) {
         UserDao userDao = container.getInstance(UserDao.class);
-        PasswordService passwordService = container.getInstance(PasswordService.class);
+        PasswordService passwordService = container.getInstance(PasswordServiceImpl.class);
         DriverDao driverDao = container.getInstance(DriverDao.class);
         CarDao carDao = container.getInstance(CarDao.class);
 

@@ -35,6 +35,16 @@ public class Executor {
     private DriverDao driverDao;
     private CarDao carDao;
 
+    @Inject
+    public Executor(Printer printer, DriverDao driverDao, CarDao carDao, CarRegisterService carRegisterService, Reader reader, LoginService loginService) {
+        this.printer = printer;
+        this.driverDao = driverDao;
+        this.carDao = carDao;
+        this.carRegisterService = carRegisterService;
+        this.reader = reader;
+        this.loginService = loginService;
+    }
+    
     /**
      * Rozlisi prislusnou akci
      *
@@ -286,33 +296,4 @@ public class Executor {
         }
     }
 
-    @Inject
-    public void setPrinter(Printer printer) {
-        this.printer = printer;
-    }
-
-    @Inject
-    public void setDriverDao(DriverDao driverDao) {
-        this.driverDao = driverDao;
-    }
-
-    @Inject
-    public void setCarDao(CarDao carDao) {
-        this.carDao = carDao;
-    }
-
-    @Inject
-    public void setCarRegisterService(CarRegisterService carRegisterService) {
-        this.carRegisterService = carRegisterService;
-    }
-
-    @Inject
-    public void setReader(Reader reader) {
-        this.reader = reader;
-    }
-
-    @Inject
-    public void setLoginService(LoginService loginService) {
-        this.loginService = loginService;
-    }
 }
