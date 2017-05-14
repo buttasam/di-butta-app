@@ -1,5 +1,4 @@
 import cvut.fit.di.builder.injector.FieldInjector;
-import cvut.fit.di.builder.injector.NotCycleConstructorInjector;
 import cvut.fit.di.container.DIContainer;
 import dao.CarDao;
 import dao.DriverDao;
@@ -13,9 +12,6 @@ import service.secure.PasswordService;
 import service.secure.PasswordServiceImpl;
 import terminal.MainBoard;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Hlavni spousteci trida.
  *
@@ -24,6 +20,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
+        System.out.println("DI kontejner - field injection");
         DIContainer container = new DIContainer(new FieldInjector());
 
         initDatabaseData(container);
