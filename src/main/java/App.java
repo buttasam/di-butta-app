@@ -10,9 +10,6 @@ import service.logic.CarRegisterService;
 import service.secure.PasswordService;
 import terminal.MainBoard;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Hlavni spousteci trida.
  *
@@ -21,6 +18,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
+        System.out.println("DI kontejner - setter injection");
         DIContainer container = new DIContainer();
 
         initDatabaseData(container);
