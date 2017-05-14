@@ -12,6 +12,9 @@ import service.secure.PasswordService;
 import service.secure.PasswordServiceImpl;
 import terminal.MainBoard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Hlavni spousteci trida.
  *
@@ -36,7 +39,7 @@ public class App {
      */
     private static void initDatabaseData(DIContainer container) {
         UserDao userDao = container.getInstance(UserDao.class);
-        PasswordService passwordService = container.getInstance(PasswordServiceImpl.class);
+        PasswordService passwordService = container.getInstance(PasswordService.class);
         DriverDao driverDao = container.getInstance(DriverDao.class);
         CarDao carDao = container.getInstance(CarDao.class);
 

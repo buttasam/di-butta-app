@@ -77,8 +77,8 @@ public class CarRegisterService {
     public void removeCarFromDriver(Car car, Driver driver) {
         List<Car> cars = driver.getCars();
 
-        List<Car>  updatedCars = cars.stream().map(c -> {
-            if(!c.getId().equals(car.getId())) {
+        List<Car> updatedCars = cars.stream().map(c -> {
+            if (!c.getId().equals(car.getId())) {
                 return c;
             } else {
                 return null;
@@ -90,13 +90,16 @@ public class CarRegisterService {
         driverDao.update(driver);
     }
 
+
     /**
      * Odstani ridice z databaze
      *
      * @param driver instance ridice
+     * @return true pokud je mozne ridice smazat,
+     * tedy neni k nemu prirazeno zadne auto
      */
     public boolean deleteDriver(Driver driver) {
-        if(!driver.getCars().isEmpty()) {
+        if (!driver.getCars().isEmpty()) {
             return false;
         }
         driverDao.delete(driver);
@@ -108,9 +111,11 @@ public class CarRegisterService {
      * Odstani auto z databaze
      *
      * @param car intance auta
+     * @return true pokud je mozne auto smazat,
+     * tedy neni k nemu prirazen zadny ridic
      */
     public boolean deleteCar(Car car) {
-        if(!car.getDrivers().isEmpty()) {
+        if (!car.getDrivers().isEmpty()) {
             return false;
         }
         carDao.delete(car);
