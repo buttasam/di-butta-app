@@ -12,9 +12,6 @@ import service.secure.PasswordService;
 import service.secure.PasswordServiceImpl;
 import terminal.MainBoard;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Hlavni spousteci trida.
  *
@@ -23,6 +20,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
+        System.out.println("DI framework - constructor injector");
         DIContainer container = new DIContainer(new NotCycleConstructorInjector());
 
         initDatabaseData(container);
