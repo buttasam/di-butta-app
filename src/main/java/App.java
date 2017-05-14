@@ -9,11 +9,7 @@ import entity.Role;
 import entity.User;
 import service.logic.CarRegisterService;
 import service.secure.PasswordService;
-import service.secure.PasswordServiceImpl;
 import terminal.MainBoard;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Hlavni spousteci trida.
