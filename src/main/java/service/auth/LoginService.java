@@ -13,14 +13,12 @@ import javax.inject.Singleton;
 @Singleton
 public class LoginService {
 
+    @Inject
     private UserDao userDao;
-    private PasswordService passwordService;
 
     @Inject
-    public LoginService(UserDao userDao, PasswordService passwordService) {
-        this.userDao = userDao;
-        this.passwordService = passwordService;
-    }
+    private PasswordService passwordService;
+
 
     /**
      * Pokusi se najit a overit uzivatele.

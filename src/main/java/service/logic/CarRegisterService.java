@@ -22,14 +22,12 @@ public class CarRegisterService {
     /**
      * DAO objekty
      */
+    @Inject
     private DriverDao driverDao;
-    private CarDao carDao;
 
     @Inject
-    public CarRegisterService(DriverDao driverDao, CarDao carDao) {
-        this.driverDao = driverDao;
-        this.carDao = carDao;
-    }
+    private CarDao carDao;
+
 
     /**
      * Prida ridice do database

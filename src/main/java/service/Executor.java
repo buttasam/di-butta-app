@@ -23,28 +23,27 @@ public class Executor {
     /**
      * Sluzby
      */
+    @Inject
     private Printer printer;
+    @Inject
     private Reader reader;
 
+    @Inject
     private CarRegisterService carRegisterService;
+
+    @Inject
     private LoginService loginService;
 
     /**
      * DAO objekty
      */
+    @Inject
     private DriverDao driverDao;
-    private CarDao carDao;
 
     @Inject
-    public Executor(Printer printer, DriverDao driverDao, CarDao carDao, CarRegisterService carRegisterService, Reader reader, LoginService loginService) {
-        this.printer = printer;
-        this.driverDao = driverDao;
-        this.carDao = carDao;
-        this.carRegisterService = carRegisterService;
-        this.reader = reader;
-        this.loginService = loginService;
-    }
-    
+    private CarDao carDao;
+
+
     /**
      * Rozlisi prislusnou akci
      *

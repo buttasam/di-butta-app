@@ -19,18 +19,17 @@ import javax.inject.Singleton;
 @Singleton
 public class MainBoard {
 
+    @Inject
     private Printer printer;
-    private Reader reader;
-    private Parser parser;
-    private Executor executor;
 
     @Inject
-    public MainBoard(Printer printer, Reader reader, Parser parser, Executor executor) {
-        this.printer = printer;
-        this.reader = reader;
-        this.parser = parser;
-        this.executor = executor;
-    }
+    private Reader reader;
+
+    @Inject
+    private Parser parser;
+
+    @Inject
+    private Executor executor;
 
     /**
      * Hlavni smicka aplikace

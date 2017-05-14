@@ -1,3 +1,4 @@
+import cvut.fit.di.builder.injector.FieldInjector;
 import cvut.fit.di.builder.injector.NotCycleConstructorInjector;
 import cvut.fit.di.container.DIContainer;
 import dao.CarDao;
@@ -23,7 +24,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        DIContainer container = new DIContainer(new NotCycleConstructorInjector());
+        DIContainer container = new DIContainer(new FieldInjector());
 
         initDatabaseData(container);
 
