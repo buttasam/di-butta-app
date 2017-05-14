@@ -14,6 +14,7 @@ public class Parser {
      * Na zaklade vstupu rozhodne o jakou akci se jedna
      *
      * @param input vstupni retezec
+     * @param user  uzivatel
      * @return typ akce
      */
     public Action resolveAction(String input, User user) {
