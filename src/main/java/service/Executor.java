@@ -39,6 +39,7 @@ public class Executor {
      * Rozlisi prislusnou akci
      *
      * @param action typ akce
+     * @param user   uzivatel
      */
     public void executeAction(Action action, User user) {
         switch (user.getRole()) {
